@@ -2,13 +2,11 @@ package gumbert.humbert.bestwatching.entity;
 
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.util.Set;
-import java.util.stream.Collectors;
 
-import static gumbert.humbert.bestwatching.entity.Permission.*;
-import static java.util.stream.Collectors.*;
+import static gumbert.humbert.bestwatching.entity.Permission.READ;
+import static gumbert.humbert.bestwatching.entity.Permission.WRITE;
+import static java.util.stream.Collectors.toSet;
 
 public enum Role {
     CLIENT(Set.of(READ)),
