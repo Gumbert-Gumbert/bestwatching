@@ -1,6 +1,7 @@
 package gumbert.humbert.bestwatching.entity;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
@@ -12,16 +13,17 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Entity
 @Table(name = "permission")
 @Data
+@NoArgsConstructor
 public class Permission {
     @Id
     @GeneratedValue(strategy = IDENTITY)
     private Long id;
     private String name;
 
-    @ManyToMany(mappedBy = "permissions")
+    @ManyToMany(mappedBy = "permissions", fetch = FetchType.EAGER)
     private Collection<Role> roles;
 
-    Permission(String name) {
+    public Permission(String name) {
         this.name = name;
     }
 }

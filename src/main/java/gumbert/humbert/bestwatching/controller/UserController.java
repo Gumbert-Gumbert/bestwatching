@@ -1,10 +1,8 @@
 package gumbert.humbert.bestwatching.controller;
 
-import gumbert.humbert.bestwatching.dao.UserService;
-import gumbert.humbert.bestwatching.entity.Role;
+import gumbert.humbert.bestwatching.service.UserService;
 import gumbert.humbert.bestwatching.entity.User;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
