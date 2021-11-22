@@ -13,4 +13,8 @@ public class UserService {
     public User getUserById(Long id) {
         return userRepository.getById(id);
     }
+
+    public User saveUser(User user) {
+        return userRepository.save(user);
+    }
 }
