@@ -3,11 +3,14 @@ package gumbert.humbert.bestwatching.dao;
 import gumbert.humbert.bestwatching.entity.User;
 import gumbert.humbert.bestwatching.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     public User getUserById(Long id) {
@@ -16,5 +19,15 @@ public class UserService {
 
     public User saveUser(User user) {
         return userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User byId = userRepository.getById(1L);
+        System.out.println("byId = " + byId);
+        User userByUsername = userRepository.findUserByUsername(username);
+        System.out.println("userByUsername = " + userByUsername);
+        return userByUsername;
+
     }
 }
