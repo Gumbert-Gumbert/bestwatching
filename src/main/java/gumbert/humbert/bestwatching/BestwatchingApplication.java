@@ -33,13 +33,20 @@ public class BestwatchingApplication {
             Set<Permission> permissionsAdmin = Set.of(write, read);
             Set<Permission> permissionsClient = Set.of(read);
             Role role_admin = roleService.saveRole(new Role("ROLE_ADMIN", permissionsAdmin));
-            roleService.saveRole(new Role("ROLE_CLIENT", permissionsClient));
-            User user = new User();
-            user.setPassword(passwordEncoder.encode("123"));
-            user.setUsername("admin");
-            user.setActive(true);
-            user.setRoles(Set.of(role_admin));
-            userService.saveUser(user);
+            Role role_client = roleService.saveRole(new Role("ROLE_CLIENT", permissionsClient));
+            User admin = new User();
+            admin.setPassword(passwordEncoder.encode("123"));
+            admin.setUsername("admin");
+            admin.setActive(true);
+            admin.setRoles(Set.of(role_admin));
+            userService.saveUser(admin);
+
+            User client = new User();
+            client.setPassword(passwordEncoder.encode("123"));
+            client.setUsername("client");
+            client.setActive(true);
+            client.setRoles(Set.of(role_client));
+            userService.saveUser(client);
         };
 
     }

@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Entity
@@ -18,6 +19,8 @@ public class User implements UserDetails {
     private String username;
     private String password;
     private boolean isActive;
+
+    private Set<User> friends;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
