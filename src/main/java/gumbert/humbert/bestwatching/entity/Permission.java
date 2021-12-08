@@ -22,10 +22,13 @@ public class Permission {
     private Long id;
 
 
+
     private String name;
+
 
     @ManyToMany(mappedBy = "permissions", fetch = FetchType.EAGER)
     private Collection<Role> roles;
+
 
 
     public Permission(String name) {
